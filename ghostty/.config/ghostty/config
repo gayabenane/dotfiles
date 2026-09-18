@@ -1,0 +1,17 @@
+command = /opt/homebrew/bin/fish
+theme = Catppuccin Mocha
+#font-family = Cascadia Code NF
+font-family = JetBrains Mono
+font-size = 24
+background-opacity = 0.75
+background-blur = 200
+cursor-style-blink = true
+
+# custom-shader = ~/.config/ghostty/shaders/shader.glsl
+
+#scanlines.glsl
+
+# If the shader includes movement/animation (using iTime), set this to true:
+#custom-shader-animation = true
+#true 
+#false

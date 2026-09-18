@@ -6,3 +6,5 @@ vim.opt.conceallevel = 2
 
 -- a = accents, b = bold/italic, d = delimiters, m = math symbols, g = greek
 vim.g.tex_conceal = "abdmg"
+
+vim.opt.guicursor:append("a:blinkwait150-blinkoff300-blinkon300")

@@ -143,3 +143,15 @@ function forecast3
     # 2. Fetch the 1-day forecast, but start printing at line 8 (skipping the giant art)
     curl -s "wttr.in/$city?1q" | tail -n +8
 end
+
+# Normal mode: Blinking block
+set -g fish_cursor_default block blink
+
+# Insert mode: Blinking line (beam)
+set -g fish_cursor_insert line blink
+
+# Visual mode: Blinking block
+set -g fish_cursor_visual block blink
+
+# Replace mode: Blinking underline
+set -g fish_cursor_replace_one underscore blink
