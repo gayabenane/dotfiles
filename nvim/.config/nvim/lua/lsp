@@ -1,0 +1,56 @@
+return {
+  -- add pyright to lspconfig
+  {
+    "neovim/nvim-lspconfig",
+
+    dependencies = {
+      -- 🔗 Required for autocomplete to work with LSP
+      "hrsh7th/cmp-nvim-lsp",
+
+      -- 📦 TypeScript helper plugin
+      "jose-elias-alvarez/typescript.nvim",
+    },
+
+    opts = {
+      servers = {
+        -- 🧠 Language servers
+        pyright = {}, -- Python
+        tsserver = {}, -- TypeScript
+      },
+      setup = {
+        -- ⚙️ Special setup for TypeScript
+        tsserver = function(_, opts)
+          require("typescript").setup({ server = opts })
+          return true -- tells LazyVim not to use default setup
+        end,
+      },
+    },
+    config = function(_, opts)
+      local lspconfig = require("lspconfig")
+
+      -- 🔗 Enable better autocomplete support
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      -- 🚀 Setup all servers from opts.servers
+      for server, server_opts in pairs(opts.servers) do
+        server_opts.capabilities = capabilities
+        lspconfig[server].setup(server_opts)
+      end
+
+      -- ⚡ Manual setup for C++
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+      })
+
+      lspconfig.pyright.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.texlab.setup({
+        capabilities = capabilities,
+      })
+    end,
+  },
+
+  -- 📦 LazyVim extra config for TypeScript (optional helper)
+  { import = "lazyvim.plugins.extras.lang.typescript" },
+}

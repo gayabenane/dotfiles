@@ -1,0 +1,27 @@
+return {
+  "nvim-mini/mini.hipatterns",
+  version = "*", -- Recommended for mini.nvim plugins
+  event = "BufReadPre", -- Loads the plugin when you open a file
+  config = function()
+    local hipatterns = require("mini.hipatterns")
+
+    hipatterns.setup({
+      highlighters = {
+        -- Keep standard hex color highlighting (e.g., #FFFFFF)
+        hex_color = hipatterns.gen_highlighter.hex_color(),
+
+        -- Custom highlighter for LaTeX HTML colors: \definecolor{name}{HTML}{FFFFFF}
+        latex_html_color = {
+          -- Looks for {HTML}{ followed by 6 hex characters, followed by }
+          pattern = "{HTML}{(%x%x%x%x%x%x)}",
+          group = function(_, _, data)
+            -- Extracts the 6 hex characters and prepends the '#'
+            -- {HTML}{FFFFFF} -> characters 8 through 13
+            local hex_color = "#" .. data.full_match:sub(8, 13)
+            return MiniHipatterns.compute_hex_color_group(hex_color, "bg")
+          end,
+        },
+      },
+    })
+  end,
+}
