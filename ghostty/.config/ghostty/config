@@ -1,12 +1,24 @@
 command = /opt/homebrew/bin/fish
-theme = Catppuccin Mocha
+theme = tokyonight
+#Catppuccin Mocha
+
+
+
+# fonts
 #font-family = Cascadia Code NF
-font-family = JetBrains Mono
-font-size = 24
+font-family = Hurmit Nerd Font
+#font-family = JetBrains Mono
+#font-family = "Fantasque Sans Mono"
+#font-family = "Victor Mono"
+font-size = 22
 background-opacity = 0.75
 background-blur = 200
 cursor-style-blink = true
+# The color of the cursor itself (e.g., the block or beam)
+cursor-color = "#ff00a0"
 
+# The color of the text sitting beneath a block cursor
+cursor-text = "#ffffff"
 # custom-shader = ~/.config/ghostty/shaders/shader.glsl
 
 #scanlines.glsl
@@ -15,3 +27,30 @@ cursor-style-blink = true
 #custom-shader-animation = true
 #true 
 #false
+#
+
+#font-feature = -calt
+#font-feature = -liga
+# Enable a slashed zero (instead of a dotted or empty '0')
+font-feature = +zero
+
+
+# Add interior padding (margins) around the text
+window-padding-x = 12
+window-padding-y = 12
+
+# Hide the native OS title bar for a flush, borderless look
+window-decoration = false
+
+# Hides the mouse pointer the moment you start typing
+mouse-hide-while-typing = true
+
+# Confirms before closing a window if a command is still running
+confirm-close-surface = true
+font-synthetic-style = true
+#
+# Scroll up to the previous prompt
+keybind = cmd+up=jump_to_prompt:-1
+
+# Scroll down to the next prompt
+keybind = cmd+down=jump_to_prompt:1
